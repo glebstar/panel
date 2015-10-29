@@ -9,7 +9,7 @@ class AdminController extends Controller {
             return redirect('/');
         }
         
-        return view('admin');
+        return view('admin.index');
     }
 }
 
