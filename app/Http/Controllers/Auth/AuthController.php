@@ -4,10 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use Auth;
-use App\User;
-use Validator;
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\ThrottlesLogins;
+//use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 class AuthController extends Controller
@@ -23,7 +21,7 @@ class AuthController extends Controller
     |
     */
 
-    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+    use AuthenticatesAndRegistersUsers;
     
     protected $redirectPath = '/';
 
@@ -39,8 +37,18 @@ class AuthController extends Controller
 
     public function postLogin(Request $request)
     {
+        $this->validate($request, [
+            'login' => 'required', 'password' => 'required',
+        ]);
+        
         if (Auth::attempt(['login' => $request->login, 'password' => $request->password])) {
             return redirect()->intended('/');
         }
+        
+        return redirect('/auth/login')
+            ->withInput($request->only($this->loginUsername(), 'remember'))
+            ->withErrors([
+                'login' => $this->getFailedLoginMessage(),
+            ]);
     }
 }
