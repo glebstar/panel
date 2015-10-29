@@ -3,6 +3,7 @@
 1. Склонировать проект
 2. composer install
 3. Расшарить директорию storage (и возможно - vendor)
+4. php artisan key:generate
 5. Создать бд
 6. Создать файл .env (скопировать из .env.example)
 7. Прописать доступ к бд в .env
