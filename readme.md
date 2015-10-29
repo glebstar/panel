@@ -1,6 +1,6 @@
 ## Требования
-php >= 5.5.9
-И другие требования к L 5.1: http://laravel.com/docs/5.1/installation
+- php >= 5.5.9
+- И другие требования к L 5.1: http://laravel.com/docs/5.1/installation
 
 ## Установка
 
