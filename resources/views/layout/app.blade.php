@@ -65,7 +65,7 @@
                         <div class="brand-wrap pull-left">
                             <div class="brand-img">
                                 <a class="brand" href="#">
-                                    <img src="assets/images/logo.png" alt="">
+                                    <img src="/assets/images/logo.png" alt="">
                                 </a>
                             </div>
                         </div>
@@ -217,6 +217,8 @@
 
         <!-- Demo Scripts -->
         <script src="/assets/js/demo/dashboard.js"></script>
+        
+        @yield('addjs')
 
     </body>
 

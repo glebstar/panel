@@ -32,7 +32,7 @@
     <div class="row-fluid">
         <div class="span12 widget">
             <div class="widget-header">
-                <span class="title">Basic DataTable</span>
+                <span class="title">Все пользователи</span>
             </div>
             <div class="widget-content table-container">
                 <table id="demo-dtable-01" class="table table-striped">
@@ -53,7 +53,7 @@
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->role == '1' ? 'Администратор' : 'Оператор' }}</td>
                             <td style="width: 70px;">
-                                <a class='icol-pencil' title='Редактировать' href='#'></a>
+                                <a id="edit_user_{{$user->id}}" class='icol-pencil' title='Редактировать' href='#'></a>
                                 <a class='icol-cross' title='Удалить' href='#'></a>
                             </td>
                         </tr>
@@ -64,4 +64,21 @@
         </div>
     </div>
 </div>
+
+<div class="modal hide fade" id="editModal">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3>Редактирование пользователя</h3>
+    </div>
+    <div class="modal-body">
+        <p>One fine body…</p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="btn btn-primary">Сохранить</a>
+    </div>
+</div>
+@endsection
+
+@section('addjs')
+<script src="/js/admin/users.js?v={{ Config::get('app.script_version') }}"></script>
 @endsection
