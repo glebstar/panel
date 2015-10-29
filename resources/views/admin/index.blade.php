@@ -4,11 +4,13 @@
 <div id="main-header" class="page-header">
     <ul class="breadcrumb">
         <li>
-            <i class="icon-home"></i>Панель
+            <i class="icon-home"></i>
+            <a href="/">Общие</a>
             <span class="divider">&raquo;</span>
         </li>
         <li>
-            <a href="#">Администратор</a>
+            <i class="icon-key"></i>
+            Администратор
         </li>
     </ul>
 

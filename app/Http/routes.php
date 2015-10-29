@@ -11,19 +11,16 @@
 |
 */
 
-/*
-Route::get('/', function () {
-    return view('welcome');
+
+Route::get('/', ['as'=>'home', 'uses' => 'HomeController@index']);
+
+Route::group(['middleware' => 'admin'], function(){
+    Route::get('/admin', ['as'=>'admin', 'uses' => 'AdminController@index']);
+    Route::get('/admin/addop', ['as'=>'admin-addop', 'uses' => 'AdminController@addop']);
+    Route::post('/admin/addopcreate', ['as'=>'admin-addop', 'uses' => 'AdminController@addopcreate']);
 });
- * 
- */
-Route::get('/', 'HomeController@index');
-Route::get('/admin', 'AdminController@index');
+
 
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
-
-// Registration routes...
-Route::get('auth/register', 'Auth\AuthController@getRegister');
-Route::post('auth/register', 'Auth\AuthController@postRegister');

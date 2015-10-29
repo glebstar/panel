@@ -85,12 +85,12 @@
                             <div id="dropdown-lists">
                                 <a class="item" href="#">
                                     <span class="item-icon"><i class="icon-exclamation-sign"></i></span>
-                                    <span class="item-label">Notifications</span>
+                                    <span class="item-label">Оповещения</span>
                                     <span class="item-count">4</span>
                                 </a>
                                 <a class="item" href="mail.html">
                                     <span class="item-icon"><i class="icon-envelope"></i></span>
-                                    <span class="item-label">Messages</span>
+                                    <span class="item-label">Сообщения</span>
                                     <span class="item-count">16</span>
                                 </a>
                             </div>
@@ -118,13 +118,13 @@
                             <aside id="sidebar">
                                 <nav id="navigation" class="collapse">
                                     <ul>
-                                        <li class="active">
+                                        <li @if (preg_match('/^home/', Route::currentRouteName())) class="active" @endif>
                                             <span title="Общие">
                                                 <i class="icon-home"></i>
                                                 <span class="nav-title">Общие</span>
                                             </span>
                                             <ul class="inner-nav">
-                                                <li class="active"><a href="/"><i class="icol-dashboard"></i> Главная</a></li>
+                                                <li  @if (Route::currentRouteName() == 'home') class="active" @endif><a href="/"><i class="icol-dashboard"></i> Главная</a></li>
                                                 <li><a href="calendar.html"><i class="icol-calendar-2"></i> Calendar</a></li>
                                                 <li><a href="icons.html"><i class="icol-lifebuoy"></i> Icons</a></li>
                                                 <li><a href="grids.html"><i class="icol-grid"></i> Grids</a></li>
@@ -132,13 +132,14 @@
                                             </ul>
                                         </li>
                                         @can('admin-content')
-                                        <li>
+                                        <li @if (preg_match('/^admin/', Route::currentRouteName())) class="active" @endif>
                                             <span title="Админ">
-                                                <i class="icon-cogs"></i>
+                                                <i class="icon-key"></i>
                                                 <span class="nav-title">Админ</span>
                                             </span>
                                             <ul class="inner-nav">
-                                                <li><a href="/admin"><i class="icol-ui-tab-content"></i> Страница администратора</a></li>
+                                                <li @if (Route::currentRouteName() == 'admin') class="active" @endif><a href="/admin"><i class="icol-ui-tab-content"></i> Страница администратора</a></li>
+                                                <li @if (Route::currentRouteName() == 'admin-addop') class="active" @endif><a href="/admin/addop"><i class="icol-add"></i> Добавить оператора</a></li>
                                             </ul>
                                         </li>
                                         @endcan
