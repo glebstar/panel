@@ -88,8 +88,16 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'name' => [
+            'required' => 'Поле Имя обязательно для заполнения.',
+        ],
+        
+        'login' => [
+            'required' => 'Поле Логин обязательно для заполнения.',
+        ],
+        
+        'password' => [
+            'required' => 'Поле Пароль обязательно для заполнения.',
         ],
     ],
 
