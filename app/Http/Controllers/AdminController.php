@@ -11,7 +11,13 @@ class AdminController extends Controller {
     }
 
     public function index() {
-        return view('admin.index');
+        //return view('admin.index');
+        return redirect('/admin/users');
+    }
+    
+    public function users() {
+        $users = User::all(['id', 'name', 'login', 'role']);
+        return view('admin.users', ['users' => $users]);
     }
 
     public function addop() {

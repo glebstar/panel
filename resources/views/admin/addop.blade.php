@@ -1,5 +1,9 @@
 @extends('layout.app')
 
+@section('addtitle')
+| Администратор | Добавить пользователя
+@endsection
+
 @section('content')
 <div id="main-header" class="page-header">
     <ul class="breadcrumb">
@@ -14,21 +18,22 @@
             <span class="divider">&raquo;</span>
         </li>
         <li>
-            Добавить оператора
+            Добавить пользователя
         </li>
     </ul>
 
     <h1 id="main-heading">
-        Администратор <span>Добавление нового оператора</span>
+        Администратор <span>Добавление нового пользователя</span>
     </h1>
 </div>
 
 <div id="main-content">
     @if (isset($create) && $create)
     <div class="alert alert-success">
-        Оператор добавлен.
+        Пользователь добавлен.
     </div>
-    <a href="/admin/addop">Добавить еще</a>
+    <a href="/admin/addop">Добавить еще</a><br />
+    <a href="/admin/users">Все пользователи</a>
     @else
     @if (count($errors) > 0)
     <div class="alert alert-danger">
@@ -45,7 +50,7 @@
         <div class="span12">
             <div class="widget">
                 <div class="widget-header">
-                    <span class="title">Новый оператор</span>
+                    <span class="title">Новый пользователь</span>
                 </div>
                 <div class="widget-content form-container">
                     <form class="form-horizontal" action='/admin/addopcreate' method="POST">

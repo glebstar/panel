@@ -45,7 +45,7 @@
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
 
-        <title>Панель для спецтехники</title>
+        <title>Панель для спецтехники @yield('addtitle')</title>
 
     </head>
 
@@ -138,8 +138,9 @@
                                                 <span class="nav-title">Админ</span>
                                             </span>
                                             <ul class="inner-nav">
-                                                <li @if (Route::currentRouteName() == 'admin') class="active" @endif><a href="/admin"><i class="icol-ui-tab-content"></i> Страница администратора</a></li>
-                                                <li @if (Route::currentRouteName() == 'admin-addop') class="active" @endif><a href="/admin/addop"><i class="icol-add"></i> Добавить оператора</a></li>
+                                                {{--<li @if (Route::currentRouteName() == 'admin') class="active" @endif><a href="/admin"><i class="icol-ui-tab-content"></i> Страница администратора</a></li>--}}
+                                                <li @if (Route::currentRouteName() == 'admin-users') class="active" @endif><a href="/admin/users"><i class="icol-group"></i> Пользователи</a></li>
+                                                <li @if (Route::currentRouteName() == 'admin-addop') class="active" @endif><a href="/admin/addop"><i class="icol-add"></i> Добавить пользователя</a></li>
                                             </ul>
                                         </li>
                                         @endcan

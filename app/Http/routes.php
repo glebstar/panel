@@ -16,6 +16,7 @@ Route::get('/', ['as'=>'home', 'uses' => 'HomeController@index']);
 
 Route::group(['middleware' => 'admin'], function(){
     Route::get('/admin', ['as'=>'admin', 'uses' => 'AdminController@index']);
+    Route::get('/admin/users', ['as'=>'admin-users', 'uses' => 'AdminController@users']);
     Route::get('/admin/addop', ['as'=>'admin-addop', 'uses' => 'AdminController@addop']);
     Route::post('/admin/addopcreate', ['as'=>'admin-addop', 'uses' => 'AdminController@addopcreate']);
 });
