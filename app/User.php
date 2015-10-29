@@ -29,7 +29,7 @@ class User extends Model implements AuthenticatableContract,
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password', 'role'];
+    protected $fillable = ['name', 'login', 'password', 'role'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -40,6 +40,6 @@ class User extends Model implements AuthenticatableContract,
     
     public function isAdmin()
     {   
-        return Auth::user()->role == 'admin' ? true : false;
+        return Auth::user()->role == 1 ? true : false;
     }
 }

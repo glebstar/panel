@@ -21,7 +21,7 @@ class AdminController extends Controller {
     public function addopcreate(Request $request) {
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:255',
-            'email' => 'required|max:12|unique:users',
+            'login' => 'required|max:255|unique:users',
             'password' => 'required|min:6'
         ]);
 
@@ -34,7 +34,7 @@ class AdminController extends Controller {
         // добавить пользователя
         $user = new User();
         $user->name = $request->name;
-        $user->email = $request->email;
+        $user->login = $request->login;
         $user->password = bcrypt($request->password);
         $user->save();
         

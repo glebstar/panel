@@ -19,7 +19,7 @@
                 <form class="form-vertical" action="/auth/login" method="POST">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="control-group">
-                        <input type="text" placeholder="E-mail" id="input-username" class="big" name="email" value="{{ old('email') }}">
+                        <input type="text" placeholder="Логин" id="input-username" class="big" name="login" value="{{ old('login') }}">
                         <input type="password" placeholder="Пароль" id="input-password" class="big"  name="password">
                     </div>
                     <div class="control-group">

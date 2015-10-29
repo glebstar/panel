@@ -60,14 +60,14 @@
                         <div class="control-group">
                             <label class="control-label" for="input00">Логин (латинскими)</label>
                             <div class="controls">
-                                <input type="text" id="input00" class="span12" name='email' value="{{ old('email') }}" />
+                                <input type="text" id="input00" class="span12" name='login' value="{{ old('login') }}" />
                             </div>
                         </div>
 
                         <div class="control-group">
                             <label class="control-label" for="input00">Пароль (минимум 6 символов)</label>
                             <div class="controls">
-                                <input type="text" id="input00" class="span12" name='password' />
+                                <input type="text" id="input00" class="span12" name='password' value="{{ old('password') }}" />
                             </div>
                         </div>
 
