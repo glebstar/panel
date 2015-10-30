@@ -71,10 +71,53 @@
         <h3>Редактирование пользователя</h3>
     </div>
     <div class="modal-body">
-        <p>One fine body…</p>
+        <h4>Общие данные</h4>
+        <form class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label" for="u-m-login">Логин</label>
+                <div class="controls">
+                    <input type="text" id="u-m-login" placeholder="Логин">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="u-m-name">Имя</label>
+                <div class="controls">
+                    <input type="text" id="u-m-name" placeholder="Имя">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="u-m-role">Роль</label>
+                <div class="controls">
+                    <select id="u-m-role">
+                        <option value="1">Администратор</option>
+                        <option value="2">Оператор</option>
+                    </select>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <button class="btn btn-primary">Сохранить</button>
+                </div>
+            </div>
+        </form>  
+        
+        <h4>Изменить пароль</h4>
+        <form class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label" for="u-m-password">Новый пароль</label>
+                <div class="controls">
+                    <input type="text" id="u-m-password" placeholder="Новый пароль">
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <button class="btn btn-primary">Изменить</button>
+                </div>
+            </div>
+        </form>
     </div>
     <div class="modal-footer">
-        <a href="#" class="btn btn-primary">Сохранить</a>
+        <a id="editModal-close" href="#" class="btn">Отмена</a>
     </div>
 </div>
 @endsection
