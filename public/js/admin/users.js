@@ -6,6 +6,7 @@ $(document).ready(function(){
         $('#u-m-name').val($('#tr-u-id-' + userId + ' .td-name').html());
         var userRole = $('#tr-u-id-' + userId + ' .td-role').html() == 'Администратор' ? 1 : 2;
         $("#u-m-role [value='" + userRole + "']").attr("selected", "selected");
+        $('#u-m-pass').val('');
         
         $('#editModal').modal();
     });
@@ -36,6 +37,37 @@ $(document).ready(function(){
                 $.pnotify({
                     title: 'Успешно!',
                     text: 'Данные изменены',
+                    type: 'success'
+                });
+            } else {
+                var eText = '';
+                for(var i=0; i<data.errors.length; i++) {
+                    eText += data.errors[i] + '<br />';
+                }
+                
+                $.pnotify({
+                    title: 'Ошибка!',
+                    text: eText,
+                    type: 'error'
+                });
+            }
+        }, 'json');  
+    });
+    
+    $('#u-m-save-pass').click(function(){
+        var uData = {
+            _token: $('#csrf-token').val(),
+            id: $('#u-m-id').html(),
+            password: $('#u-m-pass').val()
+        };
+        
+        $.post('/admin/users/editpass', uData, function(data){
+            if (data.result === 'ok') {
+                $('#editModal').modal('hide');
+                
+                $.pnotify({
+                    title: 'Успешно!',
+                    text: 'Пароль изменен',
                     type: 'success'
                 });
             } else {

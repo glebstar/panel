@@ -53,6 +53,34 @@ Route::group(['middleware' => 'admin'], function(){
         $user->save();
         return response()->json($data);
     });
+    
+    Route::post('/admin/users/editpass', function(Request $request){
+        $data = [
+            'result' => 'ok',
+            'errors' => []
+        ];
+        
+        $user = User::find($request->id);
+        if (!$user) {
+            $data['result'] = 'error';
+            $data['errors'][] = 'Пользователь не найден';
+            return response()->json($data);
+        }
+        
+        $validator = Validator::make($request->all(), [
+            'password' => 'required|min:6'
+        ]);
+        
+        if ($validator->fails()) {
+            $data['result'] = 'error';
+            $data['errors'] = $validator->errors()->all();
+            return response()->json($data);
+        }
+        
+        $user->password = bcrypt($request->password);
+        $user->save();
+        return response()->json($data);
+    });
 });
 
 

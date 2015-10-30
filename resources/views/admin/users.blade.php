@@ -112,12 +112,12 @@
             <div class="control-group">
                 <label class="control-label" for="u-m-password">Новый пароль</label>
                 <div class="controls">
-                    <input type="text" id="u-m-password" placeholder="Новый пароль">
+                    <input type="text" id="u-m-pass" placeholder="Новый пароль">
                 </div>
             </div>
             <div class="control-group">
                 <div class="controls">
-                    <button class="btn btn-primary">Изменить</button>
+                    <button id="u-m-save-pass" class="btn btn-primary">Изменить</button>
                 </div>
             </div>
         </form>
