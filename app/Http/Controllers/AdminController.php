@@ -20,20 +20,21 @@ class AdminController extends Controller {
         return view('admin.users', ['users' => $users]);
     }
 
-    public function addop() {
-        return view('admin.addop');
+    public function useradd() {
+        return view('admin.users.add');
     }
     
 
-    public function addopcreate(Request $request) {
+    public function useraddcreate(Request $request) {
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:255',
-            'login' => 'required|max:255|unique:users',
-            'password' => 'required|min:6'
+            'login' => 'required|max:255|unique:users|regex:/^[a-zA-Z0-9]+$/',
+            'password' => 'required|min:6',
+            'role' => 'required|numeric|min:1|max:2'
         ]);
 
         if ($validator->fails()) {
-            return redirect('/admin/addop')
+            return redirect('/admin/users/add')
                 ->withInput()
                 ->withErrors($validator);
         }
@@ -43,9 +44,10 @@ class AdminController extends Controller {
         $user->name = $request->name;
         $user->login = $request->login;
         $user->password = bcrypt($request->password);
+        $user->role = $request->role;
         $user->save();
         
-        return view('admin.addop', ['create' => true]);
+        return view('admin.users.add', ['create' => true]);
     }
 
 }

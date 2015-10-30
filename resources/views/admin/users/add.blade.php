@@ -32,7 +32,7 @@
     <div class="alert alert-success">
         Пользователь добавлен.
     </div>
-    <a href="/admin/addop">Добавить еще</a><br />
+    <a href="/admin/users/add">Добавить еще</a><br />
     <a href="/admin/users">Все пользователи</a>
     @else
     @if (count($errors) > 0)
@@ -53,26 +53,36 @@
                     <span class="title">Новый пользователь</span>
                 </div>
                 <div class="widget-content form-container">
-                    <form class="form-horizontal" action='/admin/addopcreate' method="POST">
+                    <form class="form-horizontal" action='/admin/users/addcreate' method="POST">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="control-group">
-                            <label class="control-label" for="input00">Имя</label>
+                            <label class="control-label" for="u-name">Имя</label>
                             <div class="controls">
-                                <input type="text" id="input00" class="span12" name='name' value="{{ old('name') }}" />
+                                <input type="text" id="u-name" class="span12" name='name' value="{{ old('name') }}" />
                             </div>
                         </div>
 
                         <div class="control-group">
-                            <label class="control-label" for="input00">Логин (латинскими)</label>
+                            <label class="control-label" for="u-login">Логин (латинскими и цифрами)</label>
                             <div class="controls">
-                                <input type="text" id="input00" class="span12" name='login' value="{{ old('login') }}" />
+                                <input type="text" id="u-login" class="span12" name='login' value="{{ old('login') }}" />
                             </div>
                         </div>
 
                         <div class="control-group">
-                            <label class="control-label" for="input00">Пароль (минимум 6 символов)</label>
+                            <label class="control-label" for="u-password">Пароль (минимум 6 символов)</label>
                             <div class="controls">
-                                <input type="text" id="input00" class="span12" name='password' value="{{ old('password') }}" />
+                                <input type="text" id="u-password" class="span12" name='password' value="{{ old('password') }}" />
+                            </div>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label class="control-label" for="u-role">Роль</label>
+                            <div class="controls">
+                                <select id="u-role" name="role">
+                                    <option value="2">Оператор</option>
+                                    <option value="1">Администратор</option>
+                                </select>
                             </div>
                         </div>
 
