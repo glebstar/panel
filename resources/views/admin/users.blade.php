@@ -2,6 +2,7 @@
 
 @section('addcss')
 <link rel="stylesheet" href="/plugins/pnotify/jquery.pnotify.css" media="screen">
+<link rel="stylesheet" href="/plugins/msgbox/jquery.msgbox.css" media="screen">
 @endsection
 
 @section('addtitle')
@@ -57,8 +58,8 @@
                             <td class="td-name">{{ $user->name }}</td>
                             <td class="td-role">{{ $user->role == '1' ? 'Администратор' : 'Оператор' }}</td>
                             <td style="width: 70px;">
-                                <a id="edit_user_{{$user->id}}" class='icol-pencil' title='Редактировать' href='#'></a>
-                                <a class='icol-cross' title='Удалить' href='#'></a>
+                                <a user_id="{{$user->id}}" class='icol-pencil' title='Редактировать' href='#'></a>
+                                <a user_id="{{$user->id}}" class='icol-cross' title='Удалить' href='#'></a>
                             </td>
                         </tr>
                         @endforeach
@@ -130,5 +131,6 @@
 
 @section('addjs')
 <script src="/plugins/pnotify/jquery.pnotify.min.js"></script>
+<script src="/plugins/msgbox/jquery.msgbox.min.js"></script>
 <script src="/js/admin/users.js?v={{ Config::get('app.script_version') }}"></script>
 @endsection
