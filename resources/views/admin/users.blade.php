@@ -1,5 +1,9 @@
 @extends('layout.app')
 
+@section('addcss')
+<link rel="stylesheet" href="/plugins/pnotify/jquery.pnotify.css" media="screen">
+@endsection
+
 @section('addtitle')
 | Администратор | Пользователи
 @endsection
@@ -47,11 +51,11 @@
                     </thead>
                     <tbody>
                         @foreach ($users as $user)
-                        <tr>
+                        <tr id="tr-u-id-{{ $user->id }}">
                             <td>{{ $user->id }}</td>
-                            <td>{{ $user->login }}</td>
-                            <td>{{ $user->name }}</td>
-                            <td>{{ $user->role == '1' ? 'Администратор' : 'Оператор' }}</td>
+                            <td class="td-login">{{ $user->login }}</td>
+                            <td class="td-name">{{ $user->name }}</td>
+                            <td class="td-role">{{ $user->role == '1' ? 'Администратор' : 'Оператор' }}</td>
                             <td style="width: 70px;">
                                 <a id="edit_user_{{$user->id}}" class='icol-pencil' title='Редактировать' href='#'></a>
                                 <a class='icol-cross' title='Удалить' href='#'></a>
@@ -66,6 +70,7 @@
 </div>
 
 <div class="modal hide fade" id="editModal">
+    <span id="u-m-id" class="hide"></span>
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h3>Редактирование пользователя</h3>
@@ -73,6 +78,7 @@
     <div class="modal-body">
         <h4>Общие данные</h4>
         <form class="form-horizontal">
+            <input type="hidden" id="csrf-token" value="{{ csrf_token() }}">
             <div class="control-group">
                 <label class="control-label" for="u-m-login">Логин</label>
                 <div class="controls">
@@ -96,7 +102,7 @@
             </div>
             <div class="control-group">
                 <div class="controls">
-                    <button class="btn btn-primary">Сохранить</button>
+                    <button id="u-m-save" class="btn btn-primary">Сохранить</button>
                 </div>
             </div>
         </form>  
@@ -123,5 +129,6 @@
 @endsection
 
 @section('addjs')
+<script src="/plugins/pnotify/jquery.pnotify.min.js"></script>
 <script src="/js/admin/users.js?v={{ Config::get('app.script_version') }}"></script>
 @endsection

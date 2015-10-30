@@ -11,6 +11,9 @@
 |
 */
 
+use App\User;
+use Illuminate\Http\Request;
+use Validator;
 
 Route::get('/', ['as'=>'home', 'uses' => 'HomeController@index']);
 
@@ -19,6 +22,37 @@ Route::group(['middleware' => 'admin'], function(){
     Route::get('/admin/users', ['as'=>'admin-users', 'uses' => 'AdminController@users']);
     Route::get('/admin/addop', ['as'=>'admin-addop', 'uses' => 'AdminController@addop']);
     Route::post('/admin/addopcreate', ['as'=>'admin-addop', 'uses' => 'AdminController@addopcreate']);
+    Route::post('/admin/users/edit', function(Request $request){
+        $data = [
+            'result' => 'ok',
+            'errors' => []
+        ];
+        
+        $user = User::find($request->id);
+        if (!$user) {
+            $data['result'] = 'error';
+            $data['errors'][] = 'Пользователь не найден';
+            return response()->json($data);
+        }
+        
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:255',
+            'login' => 'required|max:255|unique:users,login,' . $request->id,
+            'role' => 'required|numeric|min:1|max:2'
+        ]);
+        
+        if ($validator->fails()) {
+            $data['result'] = 'error';
+            $data['errors'] = $validator->errors()->all();
+            return response()->json($data);
+        }
+        
+        $user->login = $request->login;
+        $user->name = $request->name;
+        $user->role = $request->role;
+        $user->save();
+        return response()->json($data);
+    });
 });
 
 

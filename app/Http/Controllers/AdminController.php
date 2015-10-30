@@ -24,6 +24,7 @@ class AdminController extends Controller {
         return view('admin.addop');
     }
     
+
     public function addopcreate(Request $request) {
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:255',

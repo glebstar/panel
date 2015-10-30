@@ -43,9 +43,9 @@ return [
     'ip'                   => 'The :attribute must be a valid IP address.',
     'json'                 => 'The :attribute must be a valid JSON string.',
     'max'                  => [
-        'numeric' => 'The :attribute may not be greater than :max.',
+        'numeric' => 'Поле :attribute должно быть не больше :max.',
         'file'    => 'The :attribute may not be greater than :max kilobytes.',
-        'string'  => 'The :attribute may not be greater than :max characters.',
+        'string'  => 'Поле :attribute не должно превышать :max символов.',
         'array'   => 'The :attribute may not have more than :max items.',
     ],
     'mimes'                => 'The :attribute must be a file of type: :values.',
@@ -56,7 +56,7 @@ return [
         'array'   => 'The :attribute must have at least :min items.',
     ],
     'not_in'               => 'The selected :attribute is invalid.',
-    'numeric'              => 'The :attribute must be a number.',
+    'numeric'              => 'Поле :attribute должно быть числом.',
     'regex'                => 'The :attribute format is invalid.',
     'required'             => 'Поле :attribute обязательно для заполнения.',
     'required_if'          => 'The :attribute field is required when :other is :value.',
@@ -73,7 +73,7 @@ return [
     ],
     'string'               => 'The :attribute must be a string.',
     'timezone'             => 'The :attribute must be a valid zone.',
-    'unique'               => 'The :attribute has already been taken.',
+    'unique'               => 'Полу :attribute такое значение уже есть в базе данных.',
     'url'                  => 'The :attribute format is invalid.',
 
     /*
@@ -109,7 +109,8 @@ return [
     'attributes' => [
         'name' => 'Имя',
         'login' => 'Логин',
-        'password' => 'Пароль'
+        'password' => 'Пароль',
+        'role' => 'Роль'
     ],
 
 ];
