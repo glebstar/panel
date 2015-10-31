@@ -13,7 +13,6 @@
 
 use App\User;
 use Illuminate\Http\Request;
-use Validator;
 
 Route::get('/', ['as'=>'home', 'uses' => 'HomeController@index']);
 
