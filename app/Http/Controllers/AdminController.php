@@ -26,23 +26,12 @@ class AdminController extends Controller {
     
 
     public function useraddcreate(Request $request) {
-        /*
-         * @tode
-         * заменить на $this->validate()
-         * при ошибке он сам сделает редирект
-         */
-        $validator = Validator::make($request->all(), [
+        $this->validate($request, [
             'name' => 'required|max:255',
             'login' => 'required|max:255|unique:users|regex:/^[a-zA-Z0-9]+$/',
             'password' => 'required|min:6',
             'role' => 'required|numeric|min:1|max:2'
         ]);
-
-        if ($validator->fails()) {
-            return redirect('/admin/users/add')
-                ->withInput()
-                ->withErrors($validator);
-        }
 
         // добавить пользователя
         $user = new User();
